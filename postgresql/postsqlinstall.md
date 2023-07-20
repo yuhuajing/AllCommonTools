@@ -38,11 +38,11 @@
 1. 进入postgres用户
 > su postgres
 2. 初始化数据库 
-/usr/local/pgsql/bin/initdb -D /usr/local/pgsql/data
+> cd /usr/local/pgsql/bin && ./initdb -D /usr/local/pgsql/data
 3. 启动pgsql服务
-> ./usr/local/pgsql/bin/pg_ctl start  -D /usr/local/pgsql/data/
+> cd /usr/local/pgsql/bin && ./pg_ctl start  -D /usr/local/pgsql/data/
 4. 查看服务状态
-> ./usr/local/pgsql/bin/pg_ctl status  -D /usr/local/pgsql/data/
+> cd /usr/local/pgsql/bin && ./pg_ctl status  -D /usr/local/pgsql/data/
 5. 修改配置文件 开启远程连接
 > vim /usr/local/pgsql/data/pg_hba.conf
 修改：
@@ -56,9 +56,9 @@ host    all             all            all           trust
 listen_addresses = '*'
 ```
 6. 重启数据库
-> ./usr/local/pgsql/bin/pg_ctl restart  -D /usr/local/pgsql/data/
+> cd /usr/local/pgsql/bin && ./pg_ctl restart  -D /usr/local/pgsql/data/
 7. 查看服务状态
-> ./usr/local/pgsql/bin/pg_ctl status  -D /usr/local/pgsql/data/
+> cd /usr/local/pgsql/bin && ./pg_ctl status  -D /usr/local/pgsql/data/
 
 ### 链接
-> psql -h localhost -p 5432 -U postgres
+> cd /usr/local/pgsql/bin && ./psql -h localhost -p 5432 -U postgres
