@@ -7,7 +7,7 @@ sudo dpkg -i erlang-solutions_2.0_all.deb
 
 # 安装
 sudo apt update
-sudo apt install erlang
+sudo apt install erlang elixir
 
 ```
 验证
@@ -60,8 +60,7 @@ make && make check && make install
 
 1. 
 ```text
-git clone https://github.com/blockscout/blockscout.git
-cd blockscout
+git clone https://github.com/blockscout/blockscout.git && cd blockscout
 ```
 2. 
 ```text
