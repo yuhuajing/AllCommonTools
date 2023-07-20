@@ -36,3 +36,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 source ~/.profile
 ```
+
+4. Tools
+```text
+sudo apt install libtool, inotify-tools, gcc, make, automake, g++
+```

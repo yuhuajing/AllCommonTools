@@ -5,7 +5,7 @@
 1. 下载文件
 > cd ~/ && git clone https://github.com/nvm-sh/nvm.git .nvm
 2. 配置NVM参数
-> cd ~/.nvm && ./nvm.sh
+> cd ~/.nvm && chmod 777 nvm.sh &&  ./nvm.sh
 3. 配置环境变量
 > vim /etc/profile
 ```text
