@@ -10,6 +10,7 @@
 > apt -y install gcc make libreadline-dev ruby zlib1g jq
 4. 进入文件并执行验证脚本
 > cd /usr/local/postgresql && ./configure
+在检查时出现问题按照提示进行--移除检查条件即可
 5. 编译二进制文件
 > make && make install
 6. 配置环境变量
