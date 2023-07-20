@@ -64,7 +64,7 @@ git clone https://github.com/blockscout/blockscout.git && cd blockscout
 ```
 2. 
 ```text
-mix do deps.get
+mix do deps.get --force
 mix do local.rebar --force
 mix do deps.compile
 mix do compile
