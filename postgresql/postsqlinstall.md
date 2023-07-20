@@ -15,7 +15,9 @@
 > make && make install
 6. 配置环境变量
 > vim /etc/profile
+
 > export PATH=/usr/local/pgsql/bin:$PATH
+
 > source /etc/profile
 
 ## 使用postgresql
