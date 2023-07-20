@@ -57,3 +57,6 @@ listen_addresses = '*'
 > ./usr/local/pgsql/bin/pg_ctl restart  -D /usr/local/pgsql/data/
 7. 查看服务状态
 > ./usr/local/pgsql/bin/pg_ctl status  -D /usr/local/pgsql/data/
+
+### 链接
+> psql -h localhost -p 5432 -U postgres

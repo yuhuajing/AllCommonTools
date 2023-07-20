@@ -100,6 +100,16 @@ export DISABLE_EXCHANGE_RATES=true
 5. 数据库迁移
 
 > mix do ecto.drop, ecto.create, ecto.migrate
+报错xxx not_found的错误的话
+```text
+find / -name postgis-3 // 先全局查找
+
+psql -h localhost -p 5432 -U postgres
+
+\c blockscout
+
+create extension btree_gist; 在进入数据库进行测试
+```
 
 6. node 依赖
 > cd apps/block_scout_web/assets && npm install && node_modules/webpack/bin/webpack.js --mode production
