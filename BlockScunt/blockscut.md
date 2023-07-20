@@ -41,3 +41,16 @@ source ~/.profile
 ```text
 sudo apt install libtool inotify-tools gcc make automake g++
 ```
+
+5. 
+```text
+wget https://gmplib.org/download/gmp/gmp-6.2.1.tar.bz2
+# 解压
+tar -xjvf gmp-6.2.1.tar.bz2
+# 编译并安装
+cd gmp-6.2.1
+./configure
+make 
+make check 
+sudo make install
+```
