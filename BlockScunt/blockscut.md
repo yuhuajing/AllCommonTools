@@ -57,4 +57,47 @@ sudo make install
 
 6. postgres 数据库
 
-7. 
+> https://github.com/yuhuajing/AllCommonTools/blob/main/postgresql/postsqlinstall.md
+
+## Blockscout
+
+1. 
+```text
+git clone https://github.com/blockscout/blockscout.git
+cd blockscout
+```
+2. 
+```text
+mix do deps.get
+mix do local.rebar --force
+mix do deps.compile
+mix do compile
+```
+3. 添加secret_key_base环境变量：
+
+> export SECRET_KEY_BASE="VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No"
+
+或者也可以先生成一个新的secret_key_base，生成过程中请耐心等待：
+
+# mix 由elixir提供，请务必保证elixir成功安装
+> mix phx.gen.secret
+
+4. 环境变量
+
+```text
+export DB_HOST=127.0.0.1
+export DB_PASSWORD=123456
+export DB_PORT=5432
+export DB_USERNAME=postgres
+export ETHEREUM_JSONRPC_VARIANT=geth
+export COIN=ETHER
+export COIN_NAME=ETHER
+export PORT=14000
+#export NETWORK_ICON=/home/ubuntu/ic_launcher_round.png
+#export LOGO=/home/ubuntu/ic_launcher_round.png
+export ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
+export ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
+export DATABASE_URL=postgresql://postgres:123456@localhost:5432/blockscout?ssl=false
+export DISABLE_EXCHANGE_RATES=true
+```
+5. 数据库迁移
