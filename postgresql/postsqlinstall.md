@@ -61,5 +61,11 @@ listen_addresses = '*'
 7. 查看服务状态
 > cd /usr/local/pgsql/bin && ./pg_ctl status  -D /usr/local/pgsql/data/
 
-### 链接
-> cd /usr/local/pgsql/bin && ./psql -h localhost -p 5432 -U postgres
+### 连接
+> cd /usr/local/pgsql/bin && ./psql
+ 
+创建数据库
+> create database blockscout;
+
+在root用户下连接数据库
+>cd /usr/local/pgsql/bin && ./psql -h localhost -p 5432 -U postgres -d blockscout
