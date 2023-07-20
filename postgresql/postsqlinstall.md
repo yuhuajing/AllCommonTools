@@ -5,12 +5,11 @@
 1. 下载安装包
 > wget https://ftp.postgresql.org/pub/source/v14.8/postgresql-14.8.tar.gz
 2. 解压缩
->  tar -zxvf postgresql-14.8.tar.gz  -C /usr/local
+>  tar -zxvf postgresql-14.8.tar.gz  -C /usr/local/postgresql
 3. 安装工具包
 > apt -y install gcc make libreadline-dev ruby zlib1g jq
 4. 进入文件并执行验证脚本
-> cd xx
-> ./configure
+> cd /usr/local/postgresql && ./configure
 5. 编译二进制文件
 > make && make install
 6. 配置环境变量
