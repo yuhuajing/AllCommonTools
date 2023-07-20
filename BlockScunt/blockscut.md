@@ -54,3 +54,7 @@ make
 make check 
 sudo make install
 ```
+
+6. postgres 数据库
+
+7. 
