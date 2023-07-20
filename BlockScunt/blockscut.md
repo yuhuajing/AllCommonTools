@@ -39,5 +39,5 @@ source ~/.profile
 
 4. Tools
 ```text
-sudo apt install libtool, inotify-tools, gcc, make, automake, g++
+sudo apt install libtool inotify-tools gcc make automake g++
 ```
