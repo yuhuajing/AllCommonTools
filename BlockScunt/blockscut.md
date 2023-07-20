@@ -101,3 +101,23 @@ export DATABASE_URL=postgresql://postgres:123456@localhost:5432/blockscout?ssl=f
 export DISABLE_EXCHANGE_RATES=true
 ```
 5. 数据库迁移
+
+> mix do ecto.drop, ecto.create, ecto.migrate
+
+6. node 依赖
+> cd apps/block_scout_web/assets && npm install && node_modules/webpack/bin/webpack.js --mode production
+
+> cd ../explorer && npm install && cd ..
+
+> mix phx.digest
+
+7. 证书
+> cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local && cd ..
+> vi /etc/hosts
+```text
+   127.0.0.1       localhost blockscout blockscout.local
+   255.255.255.255 broadcasthost
+   ::1             localhost blockscout blockscout.local
+```
+8. 
+> mix phx.server
