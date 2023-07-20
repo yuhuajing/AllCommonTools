@@ -48,11 +48,8 @@ wget https://gmplib.org/download/gmp/gmp-6.2.1.tar.bz2
 # 解压
 tar -xjvf gmp-6.2.1.tar.bz2
 # 编译并安装
-cd gmp-6.2.1
-./configure
-make 
-make check 
-sudo make install
+cd gmp-6.2.1 && ./configure
+make && make check && make install
 ```
 
 6. postgres 数据库
