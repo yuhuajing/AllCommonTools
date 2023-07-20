@@ -45,13 +45,14 @@
 > cd /usr/local/pgsql/bin && ./pg_ctl status  -D /usr/local/pgsql/data/
 5. 修改配置文件 开启远程连接
 > vim /usr/local/pgsql/data/pg_hba.conf
-修改：
 ```shell
 # IPv4 local connections:
 host    all             all            all           trust
 ```
 > vim /usr/local/pgsql/data/postgresql.conf
+
 进入文件后，输入```/```查找```listen_addresses```,点击 ```enter```后 按键```n```向后查找， 按键```N```向前查找，找到后再次按键```enter ```定位光标。
+
 ```shell
 listen_addresses = '*'
 ```
