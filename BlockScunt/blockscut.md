@@ -88,13 +88,13 @@ export DB_USERNAME=postgres
 export ETHEREUM_JSONRPC_VARIANT=geth
 export COIN=ETHER
 export COIN_NAME=ETHER
-export PORT=14000
-#export NETWORK_ICON=/home/ubuntu/ic_launcher_round.png
-#export LOGO=/home/ubuntu/ic_launcher_round.png
+export PORT=4000
 export ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
 export ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
 export DATABASE_URL=postgresql://postgres:123456@localhost:5432/blockscout?ssl=false
 export DISABLE_EXCHANGE_RATES=true
+#export NETWORK_ICON=/home/ubuntu/ic_launcher_round.png
+#export LOGO=/home/ubuntu/ic_launcher_round.png
 ```
 5. 数据库迁移
 
@@ -115,7 +115,7 @@ create extension btree_gist; 在进入数据库进行测试
 
 > cd ../explorer && npm install && cd ..
 
-> mix phx.digest
+> cd ../ && mix phx.digest
 
 7. 证书
 > cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local && cd ..
