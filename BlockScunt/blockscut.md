@@ -53,31 +53,43 @@ mix do compile
 ```
 3. 添加secret_key_base环境变量：
 
-> export SECRET_KEY_BASE="VTIB3uHDNbvrY0+60ZWgUoUBKDn9ppLR8MI4CpRz4/qLyEFs54ktJfaNT6Z221No"
-
-或者也可以先生成一个新的secret_key_base，生成过程中请耐心等待：
-
-# mix 由elixir提供，请务必保证elixir成功安装
 > mix phx.gen.secret
+
+添加环境变量
+
+> export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
 
 4. 环境变量
 
 ```text
-export DB_HOST=127.0.0.1
-export DB_PASSWORD=123456
-export DB_PORT=5432
-export DB_USERNAME=postgres
-export ETHEREUM_JSONRPC_VARIANT=geth
-export IPC_PATH=/opt/EthereumData/geth.ipc
-export COIN=ETHER
-export COIN_NAME=ETHER
-export PORT=4000
 export ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
 export ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
-export DATABASE_URL=postgresql://postgres:123456@localhost:5432/blockscout?ssl=false
-export DISABLE_EXCHANGE_RATES=true
-#export NETWORK_ICON=/home/ubuntu/ic_launcher_round.png
-#export LOGO=/home/ubuntu/ic_launcher_round.png
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/blockscout?ssl=false
+export ETHEREUM_JSONRPC_WS_URL="ws://127.0.0.1:8545/ws"
+export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
+export CHAIN_ID=1
+export SUBNETWORK="GEN-X"
+#export LOGO="/images/blockscout_logo.svg"
+#export LOGO_FOOTER="/images/blockscout_logo.svg"
+export COIN="ETH"
+export COIN_NAME="ETHER"
+export INDEXER_DISABLE_BLOCK_REWARD_FETCHER="true"
+export INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER="true"
+export INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER="true"
+export MIX_ENV="dev"
+export BLOCKSCOUT_PROTOCOL="http"
+export PORT=4000
+export DISABLE_EXCHANGE_RATES="true"
+export POOL_SIZE=40
+export POOL_SIZE_API=40
+export ACCOUNT_POOL_SIZE=5
+export ECTO_USE_SSL="false"
+export HEART_BEAT_TIMEOUT=60
+export INDEXER_MEMORY_LIMIT="3Gb"
+export FETCH_REWARDS_WAY="manual"
+export INDEXER_EMPTY_BLOCKS_SANITIZER_BATCH_SIZE=1000
+export ETHEREUM_JSONRPC_VARIANT=geth
+export IPC_PATH=/opt/EthereumData/geth.ipc
 ```
 5. 数据库迁移
 
