@@ -131,7 +131,10 @@ create extension btree_gist; 在进入数据库进行测试
 
 ## 修改界面
 
-> https://github.com/blockscout/blockscout/blob/825c2529e4de7fad5d51d1fd1907ba4185484047/apps/block_scout_web/lib/block_scout_web/templates/layout/_topnav.html.eex
+1. 修改表头数据
+> vim /opt/blockscout/apps/block_scout_web/lib/block_scout_web/templates/layout/_topnav.html.eex
+2. 修改foot数据
+> vim /opt/blockscout/apps/block_scout_web/lib/block_scout_web/templates/layout/_footer.html.eex
 
 
 ## 重启
