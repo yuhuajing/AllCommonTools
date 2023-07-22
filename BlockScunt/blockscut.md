@@ -1,10 +1,7 @@
 1. Erlang
+> https://github.com/yuhuajing/AllCommonTools/blob/main/Erlang/erlangInstall.md
 
-``` shell
-https://github.com/yuhuajing/AllCommonTools/blob/main/Erlang/erlangInstall.md
-```
 2. NodeNPM
-
 > https://github.com/yuhuajing/AllCommonTools/blob/main/NodeNpm/nvminstall.md
 
 3. rust 
