@@ -128,7 +128,7 @@ create extension btree_gist; 在进入数据库进行测试
    ::1             localhost blockscout blockscout.local
 ```
 8.
-> cd ../../../
+> cd ../../
 
 > mix phx.server
 
