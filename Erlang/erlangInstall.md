@@ -2,33 +2,45 @@
 
 > https://www.erlang-solutions.com/downloads/
 
-1. 添加源
+1. 安装asdf
 
-> https://github.com/yuhuajing/AllCommonTools/blob/main/UbuntuSource/sourceslist.md
+> git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
-根据Ubuntu Version (22.04) 配置Erlang的源
+> vim ~/.bashrc
+```text
+. $HOME/.asdf/asdf.sh
 
-```shell
-deb https://packages.erlang-solutions.com/ubuntu jammy contrib
+. $HOME/.asdf/completions/asdf.bash
 ```
-```shell
-wget https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc
-sudo apt-key add erlang_solutions.asc
-```
+> source ~/.bashrc
 
-2. 安装Erlang
+2. 增加源
 
-```shell
-sudo apt-get update
-sudo apt-get install erlang
+```text
+asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 ```
 
-3. 验证
+3. tools
+```shell
+sudo apt install libssl-dev automake autoconf libncurses5-dev
+```
+
+4. install Erlang
 
 ```shell
-erl
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+asdf install erlang 25.3.2.3
 ```
+
 4. 安装Elixir
 ```shell
-sudo apt -y install elixir
+asdf install elixir 1.14.5-otp-25 
+```
+
+5. set global
+
+```shell
+asdf global elixir 1.14.5-otp-25
+asdf global erlang 25.3.2.3
 ```
