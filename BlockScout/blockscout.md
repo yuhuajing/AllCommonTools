@@ -111,19 +111,25 @@ create extension btree_gist; 在进入数据库进行测试
 6. node 依赖
 > cd apps/block_scout_web/assets && npm install && node_modules/webpack/bin/webpack.js --mode production
 
-> cd ../explorer && npm install && cd ..
+> cd ../../explorer && npm install
 
-> cd ../ && mix phx.digest
+> cd ../../ && mix phx.digest
 
 7. 证书
-> cd apps/block_scout_web; mix phx.gen.cert blockscout blockscout.local && cd ..
+> cd apps/block_scout_web
+
+> mix phx.gen.cert blockscout blockscout.local
+
 > vi /etc/hosts
+
 ```text
    127.0.0.1       localhost blockscout blockscout.local
    255.255.255.255 broadcasthost
    ::1             localhost blockscout blockscout.local
 ```
-8. 
+8.
+> cd ../../../
+
 > mix phx.server
 
 
