@@ -130,7 +130,7 @@ create extension btree_gist; 在进入数据库进行测试
 8.
 > cd ../../
 
-> mix phx.server
+> iex -S mix phx.server
 
 
 ## 修改界面
