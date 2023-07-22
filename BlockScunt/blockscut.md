@@ -93,8 +93,11 @@ export IPC_PATH=/opt/EthereumData/geth.ipc
 ```
 5. 数据库迁移
 
-> mix do ecto.drop, ecto.create, ecto.migrate
-报错xxx not_found的错误的话
+> mix do ecto.drop, ecto.create
+
+> mix do ecto.migrate
+
+手动安装postgrel可能会报错xxx not_found的错误的话
 ```text
 find / -name postgis-3 // 先全局查找
 
