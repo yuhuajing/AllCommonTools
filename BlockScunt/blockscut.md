@@ -86,6 +86,7 @@ export DB_PASSWORD=123456
 export DB_PORT=5432
 export DB_USERNAME=postgres
 export ETHEREUM_JSONRPC_VARIANT=geth
+export IPC_PATH=/opt/EthereumData/geth.ipc
 export COIN=ETHER
 export COIN_NAME=ETHER
 export PORT=4000
@@ -140,7 +141,7 @@ create extension btree_gist; 在进入数据库进行测试
 点击Tokens 
 > http://xxx:4000/accounts
 
-> vim /opt/blockscout/apps/block_scout_web/lib/block_scout_web/templates/address/index.html.eex#L40
+> vim /opt/blockscout/apps/block_scout_web/lib/block_scout_web/templates/address/index.html.eex
 
 
 ## 重启
