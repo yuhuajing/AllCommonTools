@@ -127,3 +127,17 @@ create extension btree_gist; 在进入数据库进行测试
 ```
 8. 
 > mix phx.server
+
+
+## 修改界面
+
+> https://github.com/blockscout/blockscout/blob/825c2529e4de7fad5d51d1fd1907ba4185484047/apps/block_scout_web/lib/block_scout_web/templates/layout/_topnav.html.eex
+
+
+## 重启
+
+> ps aux | grep phx.server | grep -v grep | awk '{print $2}'| xargs kill -15
+
+> cd /opt/blockscout && nohup mix phx.server >> mix.log 2>&1
+
+> tail -f mix.log
