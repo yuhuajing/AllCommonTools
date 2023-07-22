@@ -1,5 +1,12 @@
 # postgresql
+## Docker
+> docker pull postgres
 
+> docker run --name postgres-db -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+
+> export DATABASE_URL="postgresql://postgres:mysecretpassword@127.0.0.1:5432/blockscout"
+
+## 手动安装
 > https://www.postgresql.org/ftp/source/
 
 1. 下载安装包
