@@ -65,9 +65,9 @@ mix do compile
 export ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
 export ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
 export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/blockscout?ssl=false
-export ETHEREUM_JSONRPC_WS_URL="ws://127.0.0.1:8545/ws"
+export ETHEREUM_JSONRPC_WS_URL="ws://127.0.0.1:8546"
 export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
-export CHAIN_ID=1
+export CHAIN_ID=12345
 export SUBNETWORK="GEN-X"
 #export LOGO="/images/blockscout_logo.svg"
 #export LOGO_FOOTER="/images/blockscout_logo.svg"
@@ -94,6 +94,7 @@ export CACHE_TXS_COUNT_PERIOD="5m"
 export CACHE_TOTAL_GAS_USAGE_PERIOD="5m"
 export CACHE_AVERAGE_BLOCK_PERIOD="5m"
 export CACHE_BLOCK_COUNT_PERIOD="5m"
+export JSON_RPC=['http://123.60.164.200:8545']
 ```
 5. 数据库迁移
 
