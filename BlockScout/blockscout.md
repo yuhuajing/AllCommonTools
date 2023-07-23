@@ -155,6 +155,6 @@ create extension btree_gist; 在进入数据库进行测试
 
 > ps aux | grep phx.server | grep -v grep | awk '{print $2}'| xargs kill -15
 
-> cd /opt/blockscout && nohup mix phx.server >> mix.log 2>&1 &
+> cd /opt/blockscout && nohup mix phx.server >> mixserver.log 2>&1 &
 
 > tail -f mix.log
