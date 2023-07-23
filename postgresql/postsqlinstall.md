@@ -2,7 +2,7 @@
 ## Docker
 > docker pull postgres
 
-> docker run --name postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+> docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres
 
 > export DATABASE_URL="postgresql://postgres:mysecretpassword@127.0.0.1:5432/blockscout"
 
