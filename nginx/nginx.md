@@ -1,4 +1,9 @@
 # nginx 转发
+
+> https://tutorials.tinkink.net/zh-hans/nginx/nginx-https-config.html
+
+>  https://docshome.gitbook.io/nginx-docs/
+
 ## windows安装
 > https://github.com/nginx/nginx/tags
 
