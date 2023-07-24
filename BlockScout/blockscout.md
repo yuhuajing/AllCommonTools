@@ -151,6 +151,28 @@ create extension btree_gist; 在进入数据库进行测试
 
 > vim /opt/blockscout/apps/block_scout_web/lib/block_scout_web/templates/address/index.html.eex
 
+连接小狐狸界面
+
+> vim /opt/blockscout/apps/block_scout_web/assets/js/lib/add_chain_to_mm.js
+
+```text
+window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainId: '0x3039', // A 0x-prefixed hexadecimal string
+              chainName: 'Local RPC',
+              rpcUrls: ['https://192.168.100.191'],
+              blockExplorerUrls: ['https://192.168.101.28:8880'],
+              nativeCurrency: {
+                name: 'OIB',
+                symbol: 'OIB',
+                decimals: 18,
+              },
+            },
+          ],
+        })
+```
 
 ## 重启
 
@@ -158,4 +180,4 @@ create extension btree_gist; 在进入数据库进行测试
 
 > cd /opt/blockscout && nohup mix phx.server >> mixserver.log 2>&1 &
 
-> tail -f mix.log
+> tail -f mixserver.log
