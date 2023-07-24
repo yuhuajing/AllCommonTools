@@ -49,7 +49,6 @@ git clone https://github.com/blockscout/blockscout.git && cd blockscout
 mix do deps.get --force
 mix do local.rebar --force
 mix do deps.compile
-mix do compile
 ```
 3. 添加secret_key_base环境变量：
 
@@ -104,6 +103,9 @@ export CACHE_AVERAGE_BLOCK_PERIOD="5m"
 export CACHE_BLOCK_COUNT_PERIOD="5m"
 export JSON_RPC=['http://123.60.164.200:8545']
 ```
+根据配置的环境变量编译环境：
+
+> mix do compile 
 5. 数据库迁移
 
 > mix do ecto.drop, ecto.create
