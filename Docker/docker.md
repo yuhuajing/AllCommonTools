@@ -90,10 +90,6 @@ export ECTO_USE_SSL="false"
 export HEART_BEAT_TIMEOUT=600
 export INDEXER_MEMORY_LIMIT="10GB"
 export FETCH_REWARDS_WAY="manual"
-export INDEXER_EMPTY_BLOCKS_SANITIZER_BATCH_SIZE=1000000
-export ETHEREUM_JSONRPC_VARIANT="geth"
-#export IPC_PATH="/opt/EthereumData/geth.ipc"
-#export JSON_RPC=http://127.0.0.1:8545
 ```
 ## 构建镜像
 启动blockscout服务：
