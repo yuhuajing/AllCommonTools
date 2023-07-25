@@ -1,13 +1,15 @@
 SYSTEM := $(shell uname -s)
 HOST := host.docker.internal
-DOCKER_REPO := blockscout
+DOCKER_REPO := yuhuajing
 APP_NAME := blockscout
 BS_CONTAINER_IMAGE := $(DOCKER_REPO)/$(APP_NAME)
 BS_CONTAINER_NAME := blockscout
-PG_CONTAINER_IMAGE := postgres:14
-PG_CONTAINER_NAME := db
+PG_CONTAINER_IMAGE := postgres:latest
+PG_CONTAINER_NAME := postgres
+SC_VERIFIER_CONTAINER_IMAGE :=ghcr.io/blockscout/smart-contract-verifier
+SC_VERIFIER_CONTAINER_NAME :=smart-contract-verifier
 THIS_FILE = $(lastword $(MAKEFILE_LIST))
-RELEASE_VERSION ?= '5.2.1'
+RELEASE_VERSION ?= 'latest'
 PORT ?= '4000'
 TAG := $(RELEASE_VERSION)-commit-$(shell git log -1 --pretty=format:"%h")
 STABLE_TAG := $(RELEASE_VERSION)
@@ -22,8 +24,19 @@ else
 	DB_URL = postgresql://postgres:@$(HOST):5432/blockscout?ssl=false
 	ECTO_USE_SSL = 'false'
 endif
+
+ifdef MICROSERVICE_SC_VERIFIER_URL
+	SC_VERIFIER_URL = $(MICROSERVICE_SC_VERIFIER_URL)
+else
+	SC_VERIFIER_URL = http://@$(HOST):8050
+endif
+
+
+
 BLOCKSCOUT_CONTAINER_PARAMS = -e 'MIX_ENV=prod' \
-															 -e 'DATABASE_URL=$(DB_URL)'
+							  -e 'DATABASE_URL=$(DB_URL)' \
+							  -e 'MICROSERVICE_SC_VERIFIER_URL=$(SC_VERIFIER_URL)' \
+							  -e 'MICROSERVICE_SC_VERIFIER_ENABLED=true'
 ifeq ($(SYSTEM), Linux)
 	BLOCKSCOUT_CONTAINER_PARAMS += --network=host
 endif
@@ -621,9 +634,9 @@ endif
 ifdef MICROSERVICE_SC_VERIFIER_ENABLED
 	BLOCKSCOUT_CONTAINER_PARAMS += -e 'MICROSERVICE_SC_VERIFIER_ENABLED=$(MICROSERVICE_SC_VERIFIER_ENABLED)'
 endif
-ifdef MICROSERVICE_SC_VERIFIER_URL
-	BLOCKSCOUT_CONTAINER_PARAMS += -e 'MICROSERVICE_SC_VERIFIER_URL=$(MICROSERVICE_SC_VERIFIER_URL)'
-endif
+# ifdef MICROSERVICE_SC_VERIFIER_URL
+# 	BLOCKSCOUT_CONTAINER_PARAMS += -e 'MICROSERVICE_SC_VERIFIER_URL=$(MICROSERVICE_SC_VERIFIER_URL)'
+# endif
 ifdef MICROSERVICE_SC_VERIFIER_TYPE
 	BLOCKSCOUT_CONTAINER_PARAMS += -e 'MICROSERVICE_SC_VERIFIER_TYPE=$(MICROSERVICE_SC_VERIFIER_TYPE)'
 endif
@@ -774,7 +787,31 @@ else
 endif
 endif
 
-start: build postgres
+SC_VERIFIER_EXIST := $(shell docker ps -a --no-trunc --filter name=^/${SC_VERIFIER_CONTAINER_NAME}$ | grep ${SC_VERIFIER_CONTAINER_NAME})
+SC_VERIFIER_STARTED := $(shell docker ps --no-trunc --filter name=^/${SC_VERIFIER_CONTAINER_NAME}$ | grep ${SC_VERIFIER_CONTAINER_NAME})
+
+scverifier:
+ifdef SC_VERIFIER_URL
+	@echo "==> SC_VERIFIER_URL of external provided. There is no need to start a container for SC_VERIFIER."
+else
+ifdef SC_VERIFIER_EXIST
+	@echo "==> Checking SC_VERIFIER container"
+ifdef SC_VERIFIER_STARTED
+	@echo "==> SC_VERIFIER Already started"
+else
+	@echo "==> Starting SC_VERIFIER container"
+	@docker start $(SC_VERIFIER_CONTAINER_NAME)
+endif
+else
+	@echo "==> Creating new SC_VERIFIER_CONTAINER container"
+	@docker run -d --name $(SC_VERIFIER_CONTAINER_NAME) \
+					-p 8050:8050 \
+					$(SC_VERIFIER_CONTAINER_IMAGE)
+	@sleep 1
+endif
+endif
+
+start: build postgres scverifier
 	@echo "==> Starting blockscout"
 	@docker run --rm --name $(BS_CONTAINER_NAME) \
 					$(BLOCKSCOUT_CONTAINER_PARAMS) \
@@ -796,6 +833,13 @@ ifdef PG_STARTED
 	@echo "==> Postgres container stopped."
 else
 	@echo "==> Postgres container already stopped before."
+endif
+ifdef SC_VERIFIER_STARTED
+	@echo "==> Stopping SC_VERIFIER container."
+	@docker stop $(SC_VERIFIER_CONTAINER_NAME)
+	@echo "==> SC_VERIFIER container stopped."
+else
+	@echo "==> SC_VERIFIER container already stopped before."
 endif
 
 run: start
