@@ -791,7 +791,7 @@ SC_VERIFIER_EXIST := $(shell docker ps -a --no-trunc --filter name=^/${SC_VERIFI
 SC_VERIFIER_STARTED := $(shell docker ps --no-trunc --filter name=^/${SC_VERIFIER_CONTAINER_NAME}$ | grep ${SC_VERIFIER_CONTAINER_NAME})
 
 scverifier:
-ifdef SC_VERIFIER_URL
+ifdef MICROSERVICE_SC_VERIFIER_URL
 	@echo "==> SC_VERIFIER_URL of external provided. There is no need to start a container for SC_VERIFIER."
 else
 ifdef SC_VERIFIER_EXIST
