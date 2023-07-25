@@ -4,7 +4,7 @@
 
 > docker run --name postgres -e POSTGRES_PASSWORD="" -e POSTGRES_USER="postgres" -e POSTGRES_HOST_AUTH_METHOD="trust" -p 5432:5432 -d postgres
 
-> export DATABASE_URL=postgresql://postgres:localhost:5432/blockscout?ssl=false
+> export DATABASE_URL=postgresql://postgres@localhost:5432/blockscout?ssl=false
 
 ## 手动安装
 > https://www.postgresql.org/ftp/source/

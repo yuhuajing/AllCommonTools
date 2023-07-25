@@ -71,7 +71,7 @@ export MICROSERVICE_SC_VERIFIER_ENABLED=true
 export MICROSERVICE_SC_VERIFIER_URL=http://localhost:8050
 export ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
 export ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
-export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/blockscout?ssl=false
+export DATABASE_URL=postgresql://postgres@localhost:5432/blockscout?ssl=false
 export ETHEREUM_JSONRPC_WS_URL="ws://127.0.0.1:8546"
 export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
 export CHAIN_ID=12345
