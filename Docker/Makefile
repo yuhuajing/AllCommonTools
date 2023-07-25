@@ -21,7 +21,7 @@ endif
 ifdef DATABASE_URL
 	DB_URL = $(DATABASE_URL)
 else
-	DB_URL = postgresql://postgres:@$(HOST):5432/blockscout?ssl=false
+	DB_URL = postgresql://postgres:@$(HOST):5432/blockscout
 	ECTO_USE_SSL = 'false'
 endif
 
@@ -762,17 +762,17 @@ PG_STARTED := $(shell docker ps --no-trunc --filter name=^/${PG_CONTAINER_NAME}$
 postgres:
 ifdef DATABASE_URL
 	@echo "==> DATABASE_URL of external DB provided. There is no need to start a container for DB."
-	@$(MAKE) -f $(THIS_FILE) migrate_only
+#	@$(MAKE) -f $(THIS_FILE) migrate_only
 else
 ifdef PG_EXIST
 	@echo "==> Checking PostrgeSQL container"
 ifdef PG_STARTED
 	@echo "==> PostgreSQL Already started"
-	@$(MAKE) -f $(THIS_FILE) migrate_only
+#	@$(MAKE) -f $(THIS_FILE) migrate_only
 else
 	@echo "==> Starting PostgreSQL container"
 	@docker start $(PG_CONTAINER_NAME)
-	@$(MAKE) -f $(THIS_FILE) migrate_only
+#	@$(MAKE) -f $(THIS_FILE) migrate_only
 endif
 else
 	@echo "==> Creating new PostgreSQL container"
@@ -811,7 +811,7 @@ else
 endif
 endif
 
-start: build postgres scverifier
+start: # build postgres scverifier
 	@echo "==> Starting blockscout"
 	@docker run --rm --name $(BS_CONTAINER_NAME) \
 					$(BLOCKSCOUT_CONTAINER_PARAMS) \
