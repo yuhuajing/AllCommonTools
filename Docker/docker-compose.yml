@@ -21,43 +21,6 @@ services:
     networks:
       - localnet
 
-  blockscout:
-    image: yuhuajing/blockscout
-    container_name: blockscout
-    environment:
-      - MIX_ENV=prod
-      - MICROSERVICE_SC_VERIFIER_ENABLED=true
-      -  MICROSERVICE_SC_VERIFIER_URL=http://localhost:8050
-      -  ETHEREUM_JSONRPC_HTTP_URL=http://191.168.100.191:8545
-      -  ETHEREUM_JSONRPC_TRACE_URL=http://191.168.100.191:8545
-      -  DATABASE_URL=postgresql://postgres@localhost:5432/blockscout?ssl=false
-      -  ETHEREUM_JSONRPC_WS_URL="ws://191.168.100.191:8546"
-      -  SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
-      -  CHAIN_ID=12345
-      -  SUBNETWORK="Orbites"
-      -  COIN="ORB"
-      -  COIN_NAME="ORB"
-      -  BLOCKSCOUT_PROTOCOL="http"
-      -  PORT=4000
-      -  DISABLE_EXCHANGE_RATES="true"
-      -  POOL_SIZE=40
-      -  POOL_SIZE_API=40
-      -  ACCOUNT_POOL_SIZE=5
-      -  ECTO_USE_SSL="false"
-      -  HEART_BEAT_TIMEOUT=600
-      -  INDEXER_MEMORY_LIMIT="10GB"
-      -  FETCH_REWARDS_WAY="manual"
-      -  INDEXER_EMPTY_BLOCKS_SANITIZER_BATCH_SIZE=1000000
-      -  ETHEREUM_JSONRPC_VARIANT="geth"                                     
-    ports:
-      - "4000:4000"
-    networks:
-      - localnet
-    depends_on:
-      - postgres
-      - smart-contract-verifier
-
-
 networks:
   localnet:
     driver: bridge
