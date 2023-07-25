@@ -67,15 +67,17 @@ docker build --build-arg APP_VERSION=2.0 -t my_app:latest .
 > make start 
 
 内部执行的有：
-1. make build
-构建blockscout镜像，将../目录下的文件全部封装进docker容器中
-2. make postgres
-启动数据库容器并建表迁移数据
-3. make scverifier
-启动sc verify 容器
+1. 构建blockscout镜像，将../目录下的文件全部封装进docker容器中
+> make build
+（docker pull yuhuajing/blockscout:latest）
+2. 启动数据库容器并建表迁移数据
+> make postgres
+（docker pull postgres:latest）
+3. 启动sc verify 容器
+> make scverifier
+（docker pull ghcr.io/blockscout/smart-contract-verifier）
 4. 启动blockscout容器
+> make start
 
 关闭blockscout服务：
-
 > make stop 
-
