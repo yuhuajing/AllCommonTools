@@ -17,7 +17,7 @@ services:
     image: ghcr.io/blockscout/smart-contract-verifier
     container_name: smart-contract-verifier
     ports:
-      - "5432:5432"
+      - "8050:8050"
     networks:
       - localnet
 
@@ -28,10 +28,10 @@ services:
       - MIX_ENV=prod
       - MICROSERVICE_SC_VERIFIER_ENABLED=true
       -  MICROSERVICE_SC_VERIFIER_URL=http://localhost:8050
-      -  ETHEREUM_JSONRPC_HTTP_URL=http://localhost:8545
-      -  ETHEREUM_JSONRPC_TRACE_URL=http://localhost:8545
+      -  ETHEREUM_JSONRPC_HTTP_URL=http://191.168.100.191:8545
+      -  ETHEREUM_JSONRPC_TRACE_URL=http://191.168.100.191:8545
       -  DATABASE_URL=postgresql://postgres@localhost:5432/blockscout?ssl=false
-      -  ETHEREUM_JSONRPC_WS_URL="ws://localhost:8546"
+      -  ETHEREUM_JSONRPC_WS_URL="ws://191.168.100.191:8546"
       -  SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
       -  CHAIN_ID=12345
       -  SUBNETWORK="Orbites"
