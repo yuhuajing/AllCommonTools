@@ -60,7 +60,25 @@ docker build --build-arg APP_VERSION=2.0 -t my_app:latest .
 
 检索查询该镜像
 >docker search username/ubuntu
-
+## 声明环境变量
+```text
+export MIX_ENV=prod
+export ETHEREUM_JSONRPC_VARIANT=geth
+export MICROSERVICE_SC_VERIFIER_ENABLED=true
+export MICROSERVICE_SC_VERIFIER_URL=http://localhost:8050
+export CHAIN_ID=12345
+export ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
+export ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
+export ETHEREUM_JSONRPC_WS_URL="ws://127.0.0.1:8546"
+export DATABASE_URL=postgresql://postgres@localhost:5432/blockscout?ssl=false
+export PORT=4000
+export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
+export SUBNETWORK="Orbites"
+export COIN="ORB"
+export COIN_NAME="ORB"
+#export LOGO="/images/blockscout_logo.svg"
+#export LOGO_FOOTER="/images/blockscout_logo.svg"
+```
 ## 构建镜像
 启动blockscout服务：
 
