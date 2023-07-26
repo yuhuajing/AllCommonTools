@@ -2,7 +2,7 @@
 ## Docker
 > docker pull postgres
 
-> docker run --name postgres -e POSTGRES_PASSWORD="" -e POSTGRES_USER="postgres" -e POSTGRES_HOST_AUTH_METHOD="trust" -p 5432:5432 -d postgres
+> docker run --name postgres -e POSTGRES_PASSWORD="" -e POSTGRES_USER="postgres" -p 5432:5432 -d postgres
 
 空password
 
