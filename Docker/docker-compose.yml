@@ -13,7 +13,7 @@ services:
     networks:
       - localnet
 
-  smart-contract-verifier:
+  smartcontractverifier:
     image: ghcr.io/blockscout/smart-contract-verifier
     container_name: smart-contract-verifier
     # ports:
@@ -27,7 +27,7 @@ services:
     environment:
       - MIX_ENV=prod
       - MICROSERVICE_SC_VERIFIER_ENABLED=true
-      - MICROSERVICE_SC_VERIFIER_URL=http://smart-contract-verifier:8050
+      - MICROSERVICE_SC_VERIFIER_URL=http://smartcontractverifier:8050
       - ETHEREUM_JSONRPC_HTTP_URL=http://123.60.164.200:8545
       - ETHEREUM_JSONRPC_TRACE_URL=http://123.60.164.200:8545
       - DATABASE_URL=postgresql://postgres:polaris@postgresql:5432/blockscout
@@ -55,7 +55,7 @@ services:
       - localnet
     depends_on:
       - postgresql
-      - smart-contract-verifier
+      - smartcontractverifier
 
 
 networks:
