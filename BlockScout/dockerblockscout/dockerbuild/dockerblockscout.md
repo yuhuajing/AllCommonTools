@@ -83,12 +83,20 @@ export INDEXER_MEMORY_LIMIT="10GB"
 export FETCH_REWARDS_WAY="manual"
 ```
 ## 构建镜像
-启动blockscout服务：
 
-> make start 
+1. 在 本地blockscout文件的docker目录下```https://github.com/blockscout/blockscout/tree/master/docker```执行```make build```构建容器。
+2. ```make build```通过同路径下的DockFile文件执行容器的封装工作，将```../```的所有文件拷贝的容器内
+3. 容器构建完成后，可以通过docker push推送到Docker hub
+```text
+docker login
 
-内部执行的有：
-1. 构建blockscout镜像，将../目录下的文件全部封装进docker容器中
+docker tag blockscout xxx/blockscout:latest
+
+docker push xxx/blockscout:latest
+```
+
+## MakeFile运行镜像
+1. 拉取/build blockscout镜像
 > make build
 
 （docker pull yuhuajing/blockscout:latest）
@@ -109,29 +117,3 @@ export FETCH_REWARDS_WAY="manual"
 关闭blockscout服务：
 > make stop 
 ```
-## 构建镜像
-启动blockscout服务：
-
-> make start 
-
-内部执行的有：
-1. 构建blockscout镜像，将../目录下的文件全部封装进docker容器中
-> make build
-
-（docker pull yuhuajing/blockscout:latest）
-
-2. 启动数据库容器并建表迁移数据
-> make postgres
-
-（docker pull postgres:latest）
-
-3. 启动sc verify 容器
-> make scverifier
-
-（docker pull ghcr.io/blockscout/smart-contract-verifier）
-
-4. 启动blockscout容器
-> make start
-
-关闭blockscout服务：
-> make stop 

@@ -822,7 +822,8 @@ stop:
 ifdef BS_STARTED
 	@echo "==> Stopping BlockScout container."
 	@docker stop $(BS_CONTAINER_NAME)
-	@echo "==> BlockScout container stopped."
+	@docker rm $(BS_CONTAINER_NAME)
+	@echo "==> BlockScout container stopped and removed."
 else
 	@echo "==> BlockScout container already stopped before."
 endif
