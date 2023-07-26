@@ -1,29 +1,28 @@
 # Docker-compose configuration
 
-通过```docker compose -f xxx up -d```启动并运行容器
-
-## Prerequisites
-
+## 硬件
 - Docker v20.10+
-- Running Ethereum JSON RPC client
+- Running Ethereum JSON RPC client （0.0.0.0:8545 0.0.0.0:8546）
 
-## Building Docker containers from source
-构建blockscout容器
-```bash
-docker compose -f docker-compose.yml up --build
+## 启动并运行容器
+1. docker pull yuhuajing/blockscout:latest
+2. docker pull postgres:latest
+3. docker pull ghcr.io/blockscout/smart-contract-verifier
+4. 更改环境变量
+```text
+https://github.com/yuhuajing/AllCommonTools/blob/main/BlockScout/dockerblockscout/docker-compose/envs/common-blockscout.env/#L3
+https://github.com/yuhuajing/AllCommonTools/blob/main/BlockScout/dockerblockscout/docker-compose/envs/common-blockscout.env/#L4
+https://github.com/yuhuajing/AllCommonTools/blob/main/BlockScout/dockerblockscout/docker-compose/envs/common-blockscout.env/#L5
+https://github.com/yuhuajing/AllCommonTools/blob/main/BlockScout/dockerblockscout/docker-compose/envs/common-blockscout.env/#L7
 ```
-
-This command uses by-default `docker-compose.yml`, which builds the explorer into the Docker image and runs 6 Docker containers:
-
-- Postgres database, which will be available at port 5432 on localhost.
-- smart contract verification, which will be available at port 6379 on localhost.
-- Blockscout explorer at http://localhost:4000.
-
-## Building Docker containers from source with native smart contract verification (deprecated)
-
-```bash
-docker-compose -f docker-compose-no-rust-verification.yml up --build
+5. 启动镜像
+> docker compose -f docker-compose.yml up -d
+```text
+23602cc7ff09   yuhuajing/blockscout:latest                            "bash -c 'bin/blocks…"   49 minutes ago   Up 49 minutes   0.0.0.0:4000->4000/tcp, :::4000->4000/tcp   blockscout
+f589c9379e8d   postgres:latest                                        "docker-entrypoint.s…"   49 minutes ago   Up 49 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres
+dfbb4de52233   ghcr.io/blockscout/smart-contract-verifier:latest      "./smart-contract-ve…"   49 minutes ago   Up 49 minutes   0.0.0.0:8050->8050/tcp, :::8050->8050/tcp   smart-contract-verifier
 ```
+6. http://localhost:4000
 
 ## Configs for different Ethereum clients
 

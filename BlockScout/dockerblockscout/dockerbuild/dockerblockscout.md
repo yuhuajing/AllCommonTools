@@ -95,25 +95,36 @@ docker tag blockscout xxx/blockscout:latest
 docker push xxx/blockscout:latest
 ```
 
-## MakeFile运行镜像
+## MakeFile构建镜像
 1. 拉取/build blockscout镜像
 > make build
-
-（docker pull yuhuajing/blockscout:latest）
 
 2. 启动数据库容器并建表迁移数据
 > make postgres
 
-（docker pull postgres:latest）
-
 3. 启动sc verify 容器
 > make scverifier
-
-（docker pull ghcr.io/blockscout/smart-contract-verifier）
 
 4. 启动blockscout容器
 > make start
 
 关闭blockscout服务：
 > make stop 
+```
+
+## docker-compose 构建容器
+```bash
+docker compose -f docker-compose.yml up --build
+```
+
+This command uses by-default `docker-compose.yml`, which builds the explorer into the Docker image and runs 6 Docker containers:
+
+- Postgres database, which will be available at port 5432 on localhost.
+- smart contract verification, which will be available at port 6379 on localhost.
+- Blockscout explorer at http://localhost:4000.
+
+## Building Docker containers from source with native smart contract verification (deprecated)
+
+```bash
+docker-compose -f docker-compose-no-rust-verification.yml up --build
 ```
