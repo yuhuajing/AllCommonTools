@@ -21,7 +21,7 @@ endif
 ifdef DATABASE_URL
 	DB_URL = $(DATABASE_URL)
 else
-	DB_URL = postgresql://postgres:@$(HOST):5432/blockscout
+	DB_URL = postgresql://postgres:polaris@$(HOST):5432/blockscout
 	ECTO_USE_SSL = 'false'
 endif
 
@@ -777,9 +777,8 @@ endif
 else
 	@echo "==> Creating new PostgreSQL container"
 	@docker run -d --name $(PG_CONTAINER_NAME) \
-					-e POSTGRES_PASSWORD="" \
+					-e POSTGRES_PASSWORD="polaris" \
 					-e POSTGRES_USER="postgres" \
-					-e POSTGRES_HOST_AUTH_METHOD="trust" \
 					-p 5432:5432 \
 					$(PG_CONTAINER_IMAGE)
 	@sleep 1
