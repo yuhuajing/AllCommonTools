@@ -5,9 +5,12 @@
 - Running Ethereum JSON RPC client （0.0.0.0:8545 0.0.0.0:8546）
 
 ## 启动并运行容器
-1. docker pull yuhuajing/blockscout:latest
-2. docker pull postgres:latest
-3. docker pull ghcr.io/blockscout/smart-contract-verifier
+1.
+> docker pull yuhuajing/blockscout:latest
+2. 
+> docker pull postgres:latest
+3. 
+> docker pull ghcr.io/blockscout/smart-contract-verifier
 4. 更改环境变量
 ```text
 https://github.com/yuhuajing/AllCommonTools/blob/main/BlockScout/dockerblockscout/docker-compose/envs/common-blockscout.env/#L3
@@ -22,7 +25,8 @@ https://github.com/yuhuajing/AllCommonTools/blob/main/BlockScout/dockerblockscou
 f589c9379e8d   postgres:latest                                        "docker-entrypoint.s…"   49 minutes ago   Up 49 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   postgres
 dfbb4de52233   ghcr.io/blockscout/smart-contract-verifier:latest      "./smart-contract-ve…"   49 minutes ago   Up 49 minutes   0.0.0.0:8050->8050/tcp, :::8050->8050/tcp   smart-contract-verifier
 ```
-6. http://localhost:4000
+6. 
+> http://localhost:4000
 
 ## Configs for different Ethereum clients
 
