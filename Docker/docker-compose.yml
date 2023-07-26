@@ -8,8 +8,8 @@ services:
       - POSTGRES_PASSWORD="polaris"
       - POSTGRES_USER=postgres
       # - POSTGRES_HOST_AUTH_METHOD=trust
-    # ports:
-    #   - "5432:5432"
+    ports:
+      - "5432:5432"
     networks:
       - localnet
 
@@ -20,6 +20,19 @@ services:
     #   - "8050:8050"
     networks:
       - localnet
+
+  createdb:
+    image: yuhuajing/blockscout:latest
+    container_name: createdb
+    command: 
+      - /bin/sh -c "echo $$MIX_ENV && ./bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\""
+    environment:
+      - DATABASE_URL=postgresql://postgres:polaris@postgresql:5432/blockscout
+      - ECTO_USE_SSL="false"                       
+    networks:
+      - localnet
+    depends_on:
+      - postgresql
 
   blockscout:
     image: yuhuajing/blockscout:latest
@@ -61,6 +74,7 @@ services:
       - localnet
     depends_on:
       - postgresql
+      - createdb
       - smartcontractverifier
 
 
