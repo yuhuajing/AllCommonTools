@@ -69,10 +69,12 @@ mix do deps.compile
 export MIX_ENV=prod
 export MICROSERVICE_SC_VERIFIER_ENABLED=true
 export MICROSERVICE_SC_VERIFIER_URL=http://localhost:8050
+export ETHEREUM_JSONRPC_VARIANT="geth"
 export ETHEREUM_JSONRPC_HTTP_URL=http://123.60.164.200:8545
 export ETHEREUM_JSONRPC_TRACE_URL=http://123.60.164.200:8545
-export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/blockscout?ssl=false
 export ETHEREUM_JSONRPC_WS_URL="ws://123.60.164.200:8546"
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/blockscout
+export ECTO_USE_SSL="false"
 export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
 export CHAIN_ID=12345
 export SUBNETWORK="Orbites"
@@ -83,21 +85,16 @@ export COIN_NAME="ORB"
 #export INDEXER_DISABLE_BLOCK_REWARD_FETCHER="true"
 #export INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER="true"
 #export INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER="true"
-#export MIX_ENV="dev"
 export BLOCKSCOUT_PROTOCOL="http"
 export PORT=4000
 export DISABLE_EXCHANGE_RATES="true"
 export POOL_SIZE=40
 export POOL_SIZE_API=40
 export ACCOUNT_POOL_SIZE=5
-export ECTO_USE_SSL="false"
 export HEART_BEAT_TIMEOUT=600
 export INDEXER_MEMORY_LIMIT="10GB"
 export FETCH_REWARDS_WAY="manual"
-export INDEXER_EMPTY_BLOCKS_SANITIZER_BATCH_SIZE=1000000
-export ETHEREUM_JSONRPC_VARIANT="geth"
-#export IPC_PATH="/opt/EthereumData/geth.ipc"
-#export JSON_RPC=http://127.0.0.1:8545                                      
+export INDEXER_EMPTY_BLOCKS_SANITIZER_BATCH_SIZE=1000000                         
 ```
 根据配置的环境变量编译环境：
 

@@ -6,11 +6,11 @@
 
 空password
 
-> export DATABASE_URL=postgresql://postgres@localhost:5432/blockscout?ssl=false
+> export DATABASE_URL=postgresql://postgres@localhost:5432/blockscout
 
 带有password
 
-> DATABASE_URL=postgresql://postgres:password@localhost:5432/blockscout?ssl=false
+> DATABASE_URL=postgresql://postgres:password@localhost:5432/blockscout
 
 ## 手动安装
 > https://www.postgresql.org/ftp/source/
