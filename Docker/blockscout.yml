@@ -4,6 +4,7 @@ services:
   blockscout:
     image: yuhuajing/blockscout:latest
     container_name: blockscout
+    command: /bin/sh -c "./bin/blockscout start"
     environment:
       - MIX_ENV=prod
       - MICROSERVICE_SC_VERIFIER_ENABLED=true
