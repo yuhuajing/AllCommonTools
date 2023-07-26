@@ -15,7 +15,7 @@ services:
       - db
       - smart-contract-verifier
       # - redis_db
-    image: blockscout/blockscout:latest
+    image: yuhuajing/blockscout:latest
     build:
       context: ..
       dockerfile: ./docker/Dockerfile  #blockscout文件夹下的Dockerfile目录
