@@ -63,12 +63,10 @@ docker build --build-arg APP_VERSION=2.0 -t my_app:latest .
 ## 声明环境变量
 ```text
 export MIX_ENV=prod
-#export MICROSERVICE_SC_VERIFIER_ENABLED=true
-#export MICROSERVICE_SC_VERIFIER_URL=http://localhost:8050
+export ETHEREUM_JSONRPC_VARIANT=geth
 export ETHEREUM_JSONRPC_HTTP_URL=http://123.60.164.200:8545
 export ETHEREUM_JSONRPC_TRACE_URL=http://123.60.164.200:8545
-#export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/blockscout
-export ETHEREUM_JSONRPC_WS_URL="ws://123.60.164.200:8546"
+export ETHEREUM_JSONRPC_WS_URL=ws://123.60.164.200:8546
 export SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
 export CHAIN_ID=12345
 export SUBNETWORK="Orbites"
@@ -76,6 +74,10 @@ export SUBNETWORK="Orbites"
 #export LOGO_FOOTER="/images/blockscout_logo.svg"
 export COIN="ORB"
 export COIN_NAME="ORB"
+export DB_HOST=127.0.0.1
+export DB_PASSWORD=polaris
+export DB_PORT=5432
+export DATABASE_URL=postgresql://postgres:polaris@localhost:5432/blockscout?ssl=false
 #export INDEXER_DISABLE_BLOCK_REWARD_FETCHER="true"
 #export INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER="true"
 #export INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER="true"
