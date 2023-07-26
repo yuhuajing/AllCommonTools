@@ -1,25 +1,62 @@
 version: '3.4'
 
 services:
-  postgres:
-    image: postgres
-    container_name: postgres
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
     environment:
-      - POSTGRES_PASSWORD=""
+      - POSTGRES_PASSWORD="polaris"
       - POSTGRES_USER=postgres
       - POSTGRES_HOST_AUTH_METHOD=trust
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
     networks:
       - localnet
 
   smart-contract-verifier:
     image: ghcr.io/blockscout/smart-contract-verifier
     container_name: smart-contract-verifier
-    ports:
-      - "8050:8050"
+    # ports:
+    #   - "8050:8050"
     networks:
       - localnet
+
+  blockscout:
+    image: yuhuajing/blockscout:latest
+    container_name: blockscout
+    environment:
+      - MIX_ENV=prod
+      - MICROSERVICE_SC_VERIFIER_ENABLED=true
+      - MICROSERVICE_SC_VERIFIER_URL=http://smart-contract-verifier:8050
+      - ETHEREUM_JSONRPC_HTTP_URL=http://123.60.164.200:8545
+      - ETHEREUM_JSONRPC_TRACE_URL=http://123.60.164.200:8545
+      - DATABASE_URL=postgresql://postgres:polaris@postgresql:5432/blockscout?ssl=false
+      - ETHEREUM_JSONRPC_WS_URL="ws://123.60.164.200:8546"
+      - SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
+      - CHAIN_ID=12345
+      - SUBNETWORK="Orbites"
+      - COIN="ORB"
+      - COIN_NAME="ORB"
+      - BLOCKSCOUT_PROTOCOL="http"
+      - PORT=4000
+      - DISABLE_EXCHANGE_RATES="true"
+      - POOL_SIZE=40
+      - POOL_SIZE_API=40
+      - ACCOUNT_POOL_SIZE=10
+      - ECTO_USE_SSL="false"
+      - HEART_BEAT_TIMEOUT=600
+      - INDEXER_MEMORY_LIMIT="10GB"
+      - FETCH_REWARDS_WAY="manual"
+      - INDEXER_EMPTY_BLOCKS_SANITIZER_BATCH_SIZE=1000000
+      - ETHEREUM_JSONRPC_VARIANT="geth"                                     
+    ports:
+      - "4000:4000"
+    networks:
+      - localnet
+    depends_on:
+      - postgresql
+      - smart-contract-verifier
+
 
 networks:
   localnet:
