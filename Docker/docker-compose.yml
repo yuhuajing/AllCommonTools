@@ -25,8 +25,11 @@ services:
     image: yuhuajing/blockscout:latest
     container_name: blockscout
     command: 
-      - /bin/sh -c "echo $$MIX_ENV && ./bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\""
-      - /bin/sh -c "./bin/blockscout start"
+      - /bin/sh
+      - -c
+      - |
+      - "./bin/blockscout start"
+      - "echo $$MIX_ENV && ./bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\""
     environment:
       - MIX_ENV=prod
       - MICROSERVICE_SC_VERIFIER_ENABLED=true
