@@ -40,9 +40,9 @@ services:
       - MIX_ENV=prod
       - ETHEREUM_JSONRPC_VARIANT=geth
       - CHAIN_ID=12345
-      - ETHEREUM_JSONRPC_HTTP_URL=http://123.60.164.200:8545
-      - ETHEREUM_JSONRPC_TRACE_URL=http://123.60.164.200:8545
-      - ETHEREUM_JSONRPC_WS_URL=ws://123.60.164.200:8546
+      - ETHEREUM_JSONRPC_HTTP_URL=http://localhost:8545
+      - ETHEREUM_JSONRPC_TRACE_URL=http://localhost:8545
+      - ETHEREUM_JSONRPC_WS_URL=ws://localhost:8546
       - SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
       - SUBNETWORK="Orbites"
       - COIN="ORB"
