@@ -71,4 +71,4 @@ services:
 
 networks:
   localnet:
-    driver: host
+    driver: bridge

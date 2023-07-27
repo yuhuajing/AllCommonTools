@@ -9,8 +9,8 @@ services:
     environment:
         POSTGRES_PASSWORD: 'polaris'
         POSTGRES_USER: 'postgres'
-    # ports:
-    #   - 5432:5432
+    ports:
+      - 5432:5432
     volumes:
       - ./blockscout-db-data:/var/lib/postgresql/data/
 
@@ -19,8 +19,8 @@ services:
     pull_policy: always
     restart: always
     container_name: 'smart-contract-verifier'
-    # ports:
-    #   - 8050:8050
+    ports:
+      - 8050:8050
 
   blockscout:
     depends_on:
