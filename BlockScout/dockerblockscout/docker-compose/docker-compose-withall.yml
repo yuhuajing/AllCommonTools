@@ -47,7 +47,7 @@ services:
       - SUBNETWORK="Orbites"
       - COIN="ORB"
       - COIN_NAME="ORB"
-      - DATABASE_URL=postgresql://postgres:polaris@host.docker.internal:5432/blockscout?ssl=false
+      - DATABASE_URL=postgresql://postgres:polaris@host.docker.internal:5432/blockscout
       - ECTO_USE_SSL="false"
       - BLOCKSCOUT_PROTOCOL="http"
       - PORT=4000
