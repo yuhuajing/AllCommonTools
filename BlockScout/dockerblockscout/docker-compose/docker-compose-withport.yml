@@ -22,6 +22,11 @@ services:
     ports:
       - 8050:8050
     #network_mode: host
+    environment:
+      - SMART_CONTRACT_VERIFIER__SOLIDITY__ENABLED=true
+      - SMART_CONTRACT_VERIFIER__VYPER__ENABLED=false
+      - SMART_CONTRACT_VERIFIER__SOURCIFY__ENABLED=false
+      - SMART_CONTRACT_VERIFIER__METRICS__ENABLED=false    
 
   blockscout:
     depends_on:
