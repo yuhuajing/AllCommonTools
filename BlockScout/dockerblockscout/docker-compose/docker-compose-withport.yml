@@ -43,9 +43,9 @@ services:
       - ETHEREUM_JSONRPC_TRACE_URL=http://192.168.100.192:8545
       - ETHEREUM_JSONRPC_WS_URL=ws://192.168.100.192:8546
       - SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
-      - SUBNETWORK="Orbites"
-      - COIN="ORB"
-      - COIN_NAME="ORB"
+      - SUBNETWORK=Orbites
+      - COIN=ORB
+      - COIN_NAME=ORB
       - DATABASE_URL=postgresql://postgres:polaris@host.docker.internal:5432/blockscout
       - ECTO_USE_SSL="false"
       - BLOCKSCOUT_PROTOCOL="http"
