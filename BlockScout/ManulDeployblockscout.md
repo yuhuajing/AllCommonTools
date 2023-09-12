@@ -64,6 +64,7 @@ mix do deps.compile
 
 
 4. 环境变量
+> https://docs.blockscout.com/for-developers/information-and-settings/env-variables#available-env-variables
 
 ```text
 export MIX_ENV=prod
