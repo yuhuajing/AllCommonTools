@@ -27,7 +27,7 @@ services:
     restart: always
     stop_grace_period: 5m
     container_name: 'blockscout'
-    command: bash -c "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
+    command: sh -c "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
     network_mode: host
     environment:
       - MIX_ENV=prod
@@ -40,6 +40,7 @@ services:
       - SUBNETWORK=Orbites
       - COIN=ORB
       - COIN_NAME=ORB
+      - HIDE_BLOCK_MINER=true
       - DATABASE_URL=postgresql://postgres:polaris@127.0.0.1:5432/blockscout
       - ECTO_USE_SSL="false"
       - BLOCKSCOUT_PROTOCOL="http"
