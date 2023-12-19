@@ -38,7 +38,7 @@
                     gettext("Blocks"),
                     to: blocks_path(@conn, :index),
                     class: "dropdown-item #{tab_status("blocks", @conn.request_path)}")%>
-              <!-- <%= link(gettext("Uncles"),
+           <!--   <%= link(gettext("Uncles"),
                     to: uncle_path(@conn, :uncle),
                     class: "dropdown-item #{tab_status("uncles", @conn.request_path)}")%>
               <%= link(gettext("Forked Blocks (Reorgs)"),
@@ -154,13 +154,13 @@
           </li>
         <% end %>
         <li class="nav-item dropdown">
-          <a class="nav-link topnav-nav-link active-icon  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link topnav-nav-link active-icon <%= if dropdown_nets() != [], do: "dropdown-toggle" %>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="nav-link-icon">
               <%= render BlockScoutWeb.IconsView, "_active_icon.html" %>
             </span>
             <%= subnetwork_title() %>
           </a>
-          <!--<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+         <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= if Enum.count(main_nets) > 0 do %>
               <a class="dropdown-item header division">Mainnets</a>
               <%= for %{url: url, title: title} <- main_nets do %>
