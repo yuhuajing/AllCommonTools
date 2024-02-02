@@ -14,7 +14,7 @@ services:
       - ./blockscout-db-data:/var/lib/postgresql/data/
 
   smart-contract-verifier:
-    image: ghcr.io/blockscout/smart-contract-verifier:latest
+    image: yuhuajing/smart-contract-verifier:latest
     restart: always
     container_name: 'smart-contract-verifier'
     network_mode: host
@@ -23,36 +23,30 @@ services:
     depends_on:
       - db
       - smart-contract-verifier
-    image: gitea.qianking.xyz:3443/clayyu/chainexploer:latest
-    restart: always
+    image: blockscout/blockscout:latest
+    #restart: always
     stop_grace_period: 5m
     container_name: 'blockscout'
     command: sh -c "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"
     network_mode: host
     environment:
-      - MIX_ENV=prod
       - ETHEREUM_JSONRPC_VARIANT=geth
-      - CHAIN_ID=12345
       - ETHEREUM_JSONRPC_HTTP_URL=http://127.0.0.1:8545
       - ETHEREUM_JSONRPC_TRACE_URL=http://127.0.0.1:8545
       - ETHEREUM_JSONRPC_WS_URL=ws://127.0.0.1:8546
-      - SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
-      - SUBNETWORK=Orbites
-      - COIN=ORB
-      - COIN_NAME=ORB
-      - HIDE_BLOCK_MINER=true
       - DATABASE_URL=postgresql://postgres:polaris@127.0.0.1:5432/blockscout
       - ECTO_USE_SSL="false"
-      - BLOCKSCOUT_PROTOCOL="http"
-      - PORT=4000
-      - DISABLE_EXCHANGE_RATES="true"
-      - POOL_SIZE=40
-      - POOL_SIZE_API=40
-      - ACCOUNT_POOL_SIZE=10
-      - HEART_BEAT_TIMEOUT=600
-      - INDEXER_MEMORY_LIMIT="10GB"
-      - FETCH_REWARDS_WAY="manual"
+      - MIX_ENV=prod
+      - SECRET_KEY_BASE="l4Z2o45D9Cvz7lezp30vxu4mCXqeKzXozjJjioYzWBlXM/NHEAu9/2OyWTIM0+1Y"
+      - CHAIN_ID=12345
+      - SUBNETWORK=Orbites
+      - COIN_NAME=ORB
+      - INDEXER_DISABLE_BLOCK_REWARD_FETCHER=true
+      - INDEXER_DISABLE_EMPTY_BLOCKS_SANITIZER=true
+      - INDEXER_DISABLE_TOKEN_INSTANCE_RETRY_FETCHER=true
+      - HIDE_BLOCK_MINER=true
       - MICROSERVICE_SC_VERIFIER_ENABLED=true
       - MICROSERVICE_SC_VERIFIER_URL=http://127.0.0.1:8050
+      
     volumes:
       - ./logs/:/app/logs/
