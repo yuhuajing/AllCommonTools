@@ -41,3 +41,8 @@ kill -15 PID 可以理解为操作系统发送一个通知告诉应用主动关�
 SIGNTERM(15) 的效果是正常退出进程，退出前可以被阻塞或回调处理。并且它是Linux缺省的程序中断信号。
 
 > ps aux | grep fake | grep -v grep | awk '{print $2}'| xargs kill -9
+
+
+localhost端口映射方式解析；
+
+> netsh interface portproxy add v4tov4 listenport=3001 listenaddress=127.0.0.1 connectport=3001 connectaddress=192.168.101.68
